@@ -15,16 +15,16 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/nft')]
 class NFTController extends AbstractController
 {
-    #[Route('/', name: 'app_n_f_t_index', methods: ['GET'])]
-    public function indexS(NFTRepository $nFTRepository): Response
-    {
-        return $this->render('nft/index.html.twig', [
-            'n_f_ts' => $nFTRepository->findAll(),
-        ]);
-    }
+//    #[Route('/Symfo', name: 'app_n_f_t_index', methods: ['GET'])]
+//    public function index(NFTRepository $nFTRepository): Response
+//    {
+//        return $this->render('nft/index.html.twig', [
+//            'n_f_ts' => $nFTRepository->findAll(),
+//        ]);
+//    }
 
-    #[Route('/api', name: 'app_n_f_t_index_API', methods: ['GET'])]
-    public function index(EntityManagerInterface $entityManager): Response
+    #[Route('/', name: 'app_n_f_t_index_API', methods: ['GET'])]
+    public function indexApi(EntityManagerInterface $entityManager): Response
     {
         $nfts = $entityManager->getRepository(NFT::class)->findAll();
         return $this->json($nfts, 200, [], ['groups' => 'nftAll']);

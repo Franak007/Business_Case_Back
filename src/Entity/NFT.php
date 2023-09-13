@@ -35,7 +35,7 @@ class NFT
 
     #[ORM\ManyToOne(inversedBy: 'nFTs')]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(['nftAll'])]
+//    #[Groups(['nftAll'])]
     private ?User $user = null;
 
     #[ORM\ManyToMany(targetEntity: SubCategory::class, inversedBy: 'nFTs')]
