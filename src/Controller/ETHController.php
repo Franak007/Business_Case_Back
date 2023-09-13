@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/e/t/h')]
+#[Route('/eth')]
 class ETHController extends AbstractController
 {
     #[Route('/', name: 'app_e_t_h_index', methods: ['GET'])]

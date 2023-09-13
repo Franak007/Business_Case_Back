@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: NFTRepository::class)]
 class NFT
@@ -14,15 +15,19 @@ class NFT
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['nftAll'])]
     private ?int $id = null;
 
     #[ORM\Column]
+    #[Groups(['nftAll'])]
     private ?int $price = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Groups(['nftAll'])]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['nftAll'])]
     private ?string $imagePath = null;
 
     #[ORM\ManyToMany(targetEntity: Gallery::class, mappedBy: 'nFTs')]
@@ -30,6 +35,7 @@ class NFT
 
     #[ORM\ManyToOne(inversedBy: 'nFTs')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(['nftAll'])]
     private ?User $user = null;
 
     #[ORM\ManyToMany(targetEntity: SubCategory::class, inversedBy: 'nFTs')]
