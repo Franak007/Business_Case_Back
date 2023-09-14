@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/nft')]
+#[Route('/api/nft')]
 class NFTController extends AbstractController
 {
 //    #[Route('/Symfo', name: 'app_n_f_t_index', methods: ['GET'])]
@@ -24,9 +24,9 @@ class NFTController extends AbstractController
 //    }
 
     #[Route('/', name: 'app_n_f_t_index_API', methods: ['GET'])]
-    public function indexApi(EntityManagerInterface $entityManager): Response
+    public function indexApi(NFTRepository $NFTRepository): Response
     {
-        $nfts = $entityManager->getRepository(NFT::class)->findAll();
+        $nfts = $NFTRepository->findAll();
         return $this->json($nfts, 200, [], ['groups' => 'nftAll']);
     }
 
